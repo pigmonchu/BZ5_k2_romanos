@@ -74,20 +74,18 @@ class RomanNumberTest(unittest.TestCase):
         self.assertEqual(self.nr.entero_a_romano(400), 'CD')
         self.assertEqual(self.nr.entero_a_romano(3000), 'MMM')
 
-
     def test_busca_valor(self):
-        self.assertEqual(self.nr.busca_valor_menor_o_igual(2), ('I', 1))
-        self.assertEqual(self.nr.busca_valor_menor_o_igual(5), ('V', 5))
-        self.assertEqual(self.nr.busca_valor_menor_o_igual(7), ('V', 5))
+        self.assertEqual(self.nr._RomanNumber__busca_valor_menor_o_igual(2), ('I', 1))
+        self.assertEqual(self.nr._RomanNumber__busca_valor_menor_o_igual(5), ('V', 5))
+        self.assertEqual(self.nr._RomanNumber__busca_valor_menor_o_igual(7), ('V', 5))
 
     def test_descomponer(self):
-        self.assertEqual(self.nr.descomponer(1492), [1000, 400, 90, 2])
+        self.assertEqual(self.nr._RomanNumber__descomponer(1492), [1000, 400, 90, 2])
 
     def test_entero_a_romano(self):
         self.assertEqual(self.nr.entero_a_romano(1492), 'MCDXCII')
         self.assertEqual(self.nr.entero_a_romano(3999), 'MMMCMXCIX')
         self.assertEqual(self.nr.entero_a_romano(4000), 'Overflow')
-
 
 
 if __name__ == '__main__':
