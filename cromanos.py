@@ -26,7 +26,7 @@ class RomanNumber():
             self.rvalue = self.entero_a_romano()
             if self.rvalue == 'Overflow':
                 self.value = self.rvalue
-                
+
 
     def romano_a_entero(self, numero_romano):
         if numero_romano == '':
@@ -91,3 +91,40 @@ class RomanNumber():
             numero = resto
         res.append(numero)
         return res
+
+    def __str__(self):
+        return self.rvalue
+
+    def __repr__(self):
+        return self.rvalue
+
+
+    def __add__(self, other):
+        #       I,    III
+        if isinstance(other, int):
+            suma = self.value + other
+        else:
+            suma = self.value + other.value
+        resultado = RomanNumber(suma)
+        return resultado
+
+    def __radd__(self, other):
+        return self.__add__(other)
+
+    def __sub__(self, other):
+        if isinstance(other, int):
+            resta = self.value + other
+        else:
+            resta = self.value + other.value
+        resultado = RomanNumber(resta)
+        return resultado
+
+    def __rsub__(self, other):
+        return self.sub(other)
+
+    def __eq__(self, other):
+        return self.value == other.value
+    
+
+
+
