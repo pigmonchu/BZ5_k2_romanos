@@ -17,21 +17,16 @@ class RomanNumber():
     def __init__(self, valor):
         if isinstance(valor, str):
             self.value = self.romano_a_entero(valor)
-            if self.value != 'Error en formato':
-                self.romanRepresentation = valor
+            if self.value == 'Error en formato':
+                self.rvalue = self.value
             else:
-                self.value = 0
-                self.representation = ''
+                self.rvalue = valor
         else:
             self.value = valor
-            self.romanRepresentation = self.entero_a_romano()
-
-    def __str__(self):
-        return self.romanRepresentation
-
-    def __repr__(self):
-        return self.romanRepresentation
-
+            self.rvalue = self.entero_a_romano()
+            if self.rvalue == 'Overflow':
+                self.value = self.rvalue
+                
 
     def romano_a_entero(self, numero_romano):
         if numero_romano == '':
@@ -69,7 +64,7 @@ class RomanNumber():
         return entero
 
     def entero_a_romano(self):
-        if self.value > 3999:
+        if self.value > 3999 or self.value < 1:
             return 'Overflow'
 
         componentes = self.__descomponer(self.value)
